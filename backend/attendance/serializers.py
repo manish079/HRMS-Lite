@@ -58,7 +58,8 @@ class AttendanceSerializer(serializers.ModelSerializer):
         representation['employee'] = {
             'id': instance.employee.id,
             'employee_id': instance.employee.employee_id,
-            'full_name': instance.employee.full_name
+            'full_name': instance.employee.full_name,
+            'department': instance.employee.department
         }
         # Remove employee_details field (we've merged it into employee)
         representation.pop('employee_details', None)
