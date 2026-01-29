@@ -122,4 +122,7 @@ CORS_ALLOWED_ORIGINS = config(
     default='http://localhost:3000,http://localhost:5173,https://hrmanagmentfrontend.netlify.app'
 ).split(',')
 
+# Allow all origins for development (remove in production)
+CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOW_CREDENTIALS = True
