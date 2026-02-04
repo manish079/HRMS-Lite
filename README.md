@@ -1,16 +1,18 @@
-# HR Management System - Backend
+# HR Management System
 
 A Django REST Framework backend for managing employees and attendance records.
 
 ## Features
 
 ✅ **Employee Management**
+
 - Create, read, update, and delete employees
 - Unique employee IDs
 - Email validation
 - Department tracking
 
 ✅ **Attendance Management**
+
 - Mark daily attendance (Present/Absent)
 - View attendance history per employee
 - Filter attendance by date, employee, or status
@@ -48,11 +50,13 @@ python -m venv venv
 ### 3. Activate Virtual Environment
 
 **Windows:**
+
 ```bash
 .\venv\Scripts\Activate.ps1
 ```
 
 **Linux/Mac:**
+
 ```bash
 source venv/bin/activate
 ```
@@ -66,11 +70,13 @@ pip install -r requirements.txt
 ### 5. Configure Environment Variables
 
 Copy `.env.example` to `.env`:
+
 ```bash
 copy .env.example .env
 ```
 
 Edit `.env` and update with your PostgreSQL credentials:
+
 ```
 SECRET_KEY=your-secret-key-here
 DEBUG=True
@@ -112,30 +118,31 @@ Server will start at: **http://localhost:8000**
 
 ### Employee Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/employees/` | List all employees |
-| POST | `/api/employees/` | Create new employee |
-| GET | `/api/employees/{id}/` | Get employee details |
-| PUT | `/api/employees/{id}/` | Update employee |
-| PATCH | `/api/employees/{id}/` | Partial update |
-| DELETE | `/api/employees/{id}/` | Delete employee |
-| GET | `/api/employees/{id}/attendance/` | Get employee attendance history |
+| Method | Endpoint                          | Description                     |
+| ------ | --------------------------------- | ------------------------------- |
+| GET    | `/api/employees/`                 | List all employees              |
+| POST   | `/api/employees/`                 | Create new employee             |
+| GET    | `/api/employees/{id}/`            | Get employee details            |
+| PUT    | `/api/employees/{id}/`            | Update employee                 |
+| PATCH  | `/api/employees/{id}/`            | Partial update                  |
+| DELETE | `/api/employees/{id}/`            | Delete employee                 |
+| GET    | `/api/employees/{id}/attendance/` | Get employee attendance history |
 
 ### Attendance Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/attendance/` | List all attendance records |
-| POST | `/api/attendance/` | Mark attendance |
-| GET | `/api/attendance/{id}/` | Get attendance details |
-| PUT | `/api/attendance/{id}/` | Update attendance |
-| PATCH | `/api/attendance/{id}/` | Partial update |
-| DELETE | `/api/attendance/{id}/` | Delete attendance |
+| Method | Endpoint                | Description                 |
+| ------ | ----------------------- | --------------------------- |
+| GET    | `/api/attendance/`      | List all attendance records |
+| POST   | `/api/attendance/`      | Mark attendance             |
+| GET    | `/api/attendance/{id}/` | Get attendance details      |
+| PUT    | `/api/attendance/{id}/` | Update attendance           |
+| PATCH  | `/api/attendance/{id}/` | Partial update              |
+| DELETE | `/api/attendance/{id}/` | Delete attendance           |
 
 ### Query Parameters
 
 **Attendance Filtering:**
+
 - `?employee=1` - Filter by employee ID
 - `?date=2026-01-28` - Filter by date
 - `?status=Present` - Filter by status
@@ -178,6 +185,7 @@ curl http://localhost:8000/api/employees/1/attendance/
 Access Django admin at: **http://localhost:8000/admin/**
 
 Login with superuser credentials to:
+
 - Manage employees
 - View/edit attendance records
 - Use search and filters
@@ -208,12 +216,14 @@ backend/
 ## Validation Rules
 
 ### Employee
+
 - `employee_id`: Required, unique, max 20 characters
 - `full_name`: Required, max 100 characters
 - `email`: Required, valid email format
 - `department`: Required, max 100 characters
 
 ### Attendance
+
 - `employee`: Required, must exist
 - `date`: Required, cannot be future date
 - `status`: Required, must be "Present" or "Absent"
@@ -222,6 +232,7 @@ backend/
 ## Database Schema
 
 ### Employee Table
+
 - id (Primary Key)
 - employee_id (Unique)
 - full_name
@@ -231,6 +242,7 @@ backend/
 - updated_at
 
 ### Attendance Table
+
 - id (Primary Key)
 - employee_id (Foreign Key → Employee)
 - date
@@ -264,15 +276,18 @@ python manage.py collectstatic
 ## Troubleshooting
 
 ### Database Connection Error
+
 - Verify PostgreSQL is running
 - Check credentials in `.env`
 - Ensure database `hr_management_db` exists
 
 ### Import Errors
+
 - Activate virtual environment
 - Run `pip install -r requirements.txt`
 
 ### Migration Issues
+
 ```bash
 python manage.py makemigrations
 python manage.py migrate --run-syncdb
