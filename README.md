@@ -147,8 +147,6 @@ Server will start at: **http://localhost:8000**
 - `?date=2026-01-28` - Filter by date
 - `?status=Present` - Filter by status
 
-## Usage Examples
-
 ### Create Employee
 
 ```bash
